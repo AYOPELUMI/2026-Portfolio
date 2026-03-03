@@ -1,0 +1,272 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.15 0.01 60);
+  --foreground: oklch(0.92 0.02 75);
+  --card: oklch(0.22 0.015 55);
+  --card-foreground: oklch(0.92 0.02 75);
+  --popover: oklch(0.20 0.012 55);
+  --popover-foreground: oklch(0.92 0.02 75);
+  --primary: oklch(0.72 0.14 55);
+  --primary-foreground: oklch(0.15 0.01 60);
+  --secondary: oklch(0.28 0.02 55);
+  --secondary-foreground: oklch(0.88 0.03 75);
+  --muted: oklch(0.25 0.015 55);
+  --muted-foreground: oklch(0.65 0.04 60);
+  --accent: oklch(0.65 0.16 45);
+  --accent-foreground: oklch(0.12 0.01 55);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.32 0.025 55);
+  --input: oklch(0.28 0.02 55);
+  --ring: oklch(0.72 0.14 55);
+  --chart-1: oklch(0.72 0.14 55);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.18 0.012 55);
+  --sidebar-foreground: oklch(0.92 0.02 75);
+  --sidebar-primary: oklch(0.72 0.14 55);
+  --sidebar-primary-foreground: oklch(0.15 0.01 60);
+  --sidebar-accent: oklch(0.25 0.015 55);
+  --sidebar-accent-foreground: oklch(0.92 0.02 75);
+  --sidebar-border: oklch(0.32 0.025 55);
+  --sidebar-ring: oklch(0.72 0.14 55);
+
+  /* Custom skeuomorphic tokens */
+  --leather: oklch(0.30 0.05 45);
+  --leather-light: oklch(0.38 0.06 50);
+  --wood: oklch(0.25 0.04 55);
+  --wood-light: oklch(0.35 0.05 60);
+  --paper: oklch(0.88 0.04 85);
+  --paper-foreground: oklch(0.20 0.02 55);
+  --metal: oklch(0.55 0.02 60);
+  --metal-light: oklch(0.70 0.02 65);
+  --gold: oklch(0.72 0.14 55);
+  --gold-dim: oklch(0.55 0.10 55);
+  --note-yellow: oklch(0.88 0.12 95);
+  --note-pink: oklch(0.82 0.10 10);
+  --note-blue: oklch(0.82 0.08 240);
+  --note-green: oklch(0.82 0.10 145);
+}
+
+@theme inline {
+  --font-sans: 'Playfair Display', 'Georgia', serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-leather: var(--leather);
+  --color-leather-light: var(--leather-light);
+  --color-wood: var(--wood);
+  --color-wood-light: var(--wood-light);
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-metal: var(--metal);
+  --color-metal-light: var(--metal-light);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
+  --color-note-yellow: var(--note-yellow);
+  --color-note-pink: var(--note-pink);
+  --color-note-blue: var(--note-blue);
+  --color-note-green: var(--note-green);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Skeuomorphic texture overlays */
+.texture-leather {
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.05) 2px,
+      rgba(0,0,0,0.05) 4px
+    );
+}
+
+.texture-paper {
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(255,220,150,0.1) 0%, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 24px,
+      rgba(180,160,140,0.15) 24px,
+      rgba(180,160,140,0.15) 25px
+    );
+}
+
+.texture-wood {
+  background-image:
+    repeating-linear-gradient(
+      85deg,
+      transparent,
+      transparent 8px,
+      rgba(139,90,43,0.06) 8px,
+      rgba(139,90,43,0.06) 16px
+    ),
+    repeating-linear-gradient(
+      87deg,
+      transparent,
+      transparent 12px,
+      rgba(139,90,43,0.04) 12px,
+      rgba(139,90,43,0.04) 24px
+    );
+}
+
+.texture-metal {
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(0,0,0,0.1) 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(255,255,255,0.02) 1px,
+      rgba(255,255,255,0.02) 2px
+    );
+}
+
+/* Skeuomorphic shadows */
+.shadow-skeuo {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.05) inset,
+    0 -1px 0 rgba(0,0,0,0.2) inset,
+    0 4px 12px rgba(0,0,0,0.4),
+    0 1px 3px rgba(0,0,0,0.3);
+}
+
+.shadow-skeuo-deep {
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.08) inset,
+    0 -2px 0 rgba(0,0,0,0.3) inset,
+    0 8px 24px rgba(0,0,0,0.5),
+    0 2px 6px rgba(0,0,0,0.4);
+}
+
+.shadow-skeuo-pressed {
+  box-shadow:
+    0 -1px 0 rgba(255,255,255,0.03) inset,
+    0 2px 4px rgba(0,0,0,0.5) inset,
+    0 1px 2px rgba(0,0,0,0.2);
+}
+
+.shadow-note {
+  box-shadow:
+    2px 2px 8px rgba(0,0,0,0.15),
+    0 0 1px rgba(0,0,0,0.1);
+}
+
+/* Gold emboss effect */
+.gold-emboss {
+  text-shadow: 
+    0 1px 0 rgba(0,0,0,0.4),
+    0 -1px 0 rgba(255,215,0,0.2);
+}
+
+/* Stitch effect for leather */
+.stitch-border {
+  border: 2px dashed rgba(139,90,43,0.4);
+  padding: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--wood);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--leather-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dim);
+}
+
+/* Custom keyframes for animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(184,135,50,0.3); }
+  50% { box-shadow: 0 0 20px rgba(184,135,50,0.6); }
+}
+
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-vinyl-spin {
+  animation: vinyl-spin 3s linear infinite;
+}
