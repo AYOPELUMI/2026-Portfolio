@@ -7,6 +7,7 @@ import { StickyNotes } from "@/components/sticky-notes"
 import { MusicPlayer } from "@/components/music-player"
 import { Footer } from "@/components/footer"
 import { SectionDivider } from "@/components/section-divider"
+import { ThemeSelector } from "@/components/ThemeSelector"
 
 export default function Portfolio() {
   return (
@@ -23,6 +24,7 @@ export default function Portfolio() {
       <StickyNotes />
       <Footer />
       <MusicPlayer />
+      <ThemeSelector />
     </main>
   )
 }

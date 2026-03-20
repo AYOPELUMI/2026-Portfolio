@@ -37,13 +37,12 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-skeuo border-b border-border"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-3 left-0 right-0 max-w-fit mx-auto z-50 transition-all duration-500 ${isScrolled
+        ? "bg-card/95 backdrop-blur-md shadow-skeuo border-b border-border rounded-full"
+        : "bg-transparent"
+        }`}
     >
-      <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+      <div className="mx-auto max-w-6xl flex items-center justify-between md:gap-32 px-6 py-4">
         {/* Logo - leather badge */}
         <motion.a
           href="#about"
@@ -67,11 +66,10 @@ export function Navigation() {
               href={item.href}
               whileHover={{ y: -2 }}
               whileTap={{ y: 1 }}
-              className={`relative px-4 py-2 rounded-lg text-sm font-mono tracking-wide transition-all duration-300 ${
-                activeSection === item.href.slice(1)
-                  ? "text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`relative px-4 py-2 rounded-lg text-sm font-mono tracking-wide transition-all duration-300 ${activeSection === item.href.slice(1)
+                ? "text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               {activeSection === item.href.slice(1) && (
                 <motion.div

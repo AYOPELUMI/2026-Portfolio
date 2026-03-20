@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Mail, Globe, Clock } from "lucide-react"
+import { Github, Mail, Globe, Clock, Download, User } from "lucide-react"
+import Image from "next/image"
 
 const links = [
   { icon: Github, label: "GitHub", href: "https://github.com/AYOPELUMI" },
@@ -11,12 +12,24 @@ const links = [
 ]
 
 export function HeroSection() {
+  // Function to handle resume download
+  const handleDownloadResume = () => {
+    // Replace with your actual resume file path
+    const resumeUrl = "/resume.pdf"
+    const link = document.createElement("a")
+    link.href = resumeUrl
+    link.download = "Ogundeji_Ayodeji_Resume.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+    <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-44 pb-16">
       {/* Animated background - desk texture */}
       <div className="absolute inset-0 bg-background texture-wood" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-      
+
       {/* Floating decorative elements */}
       <motion.div
         animate={{ y: [0, -15, 0], rotate: [0, 3, 0] }}
@@ -29,7 +42,7 @@ export function HeroSection() {
         className="absolute bottom-32 left-[10%] w-12 h-12 rounded-full bg-gold/10 shadow-skeuo hidden lg:block"
       />
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 text-center">
         {/* Leather portfolio card */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0, rotateX: 15 }}
@@ -37,28 +50,10 @@ export function HeroSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative bg-card rounded-2xl p-8 md:p-12 texture-leather shadow-skeuo-deep border border-border"
         >
-          {/* Corner embellishments */}
-          <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-gold/40 rounded-tl-lg" />
-          <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-gold/40 rounded-tr-lg" />
-          <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-gold/40 rounded-bl-lg" />
-          <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-gold/40 rounded-br-lg" />
-
           {/* Stitching border */}
           <div className="absolute inset-4 border border-dashed border-gold/20 rounded-xl pointer-events-none" />
 
-          {/* Name plate - metal embossed */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="mb-6"
-          >
-            <div className="inline-block bg-secondary/80 texture-metal rounded-xl px-6 py-2 shadow-skeuo mb-4">
-              <span className="font-mono text-xs tracking-[0.3em] text-muted-foreground uppercase">
-                Front-End Web & Mobile Developer
-              </span>
-            </div>
-          </motion.div>
+
 
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
@@ -70,23 +65,55 @@ export function HeroSection() {
             <span className="text-primary">Ayodeji</span>
           </motion.h1>
 
+          {/* Subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="mb-8"
+          >
+            <div className="inline-block bg-card/80 texture-leather rounded-xl px-6 py-3 shadow-skeuo border border-border">
+              <p className="font-mono text-sm md:text-base text-muted-foreground tracking-wide">
+                Front-End Web & Mobile Developer
+              </p>
+              <p className="font-mono text-xs text-muted-foreground/70 mt-1">
+                Flutter • React • Next.js • TypeScript
+              </p>
+            </div>
+          </motion.div>
+
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed font-mono text-sm md:text-base text-pretty"
           >
-            I build scalable, user-focused digital products across Flutter and JavaScript ecosystems. 
+            I build scalable, user-focused digital products across Flutter and JavaScript ecosystems.
             Pixel-perfect interfaces, clean architecture, and modern development practices are my forte.
           </motion.p>
 
-          {/* Social links - metal buttons */}
+          {/* Action Buttons - Social Links + Download Resume */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.8 }}
             className="flex flex-wrap items-center justify-center gap-3"
           >
+            {/* Download Resume Button */}
+            <motion.button
+              onClick={handleDownloadResume}
+              whileHover={{ y: -3, scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 1, type: "spring", stiffness: 200 }}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary texture-metal shadow-skeuo text-white hover:bg-primary/90 border border-primary/30 transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              <span className="font-mono text-xs font-medium">Download Resume</span>
+            </motion.button>
+
+            {/* Social Links */}
             {links.map((link, i) => (
               <motion.a
                 key={link.label}
@@ -97,7 +124,7 @@ export function HeroSection() {
                 whileTap={{ scale: 0.95 }}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1 + i * 0.1, type: "spring", stiffness: 200 }}
+                transition={{ delay: 1 + (i + 1) * 0.1, type: "spring", stiffness: 200 }}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary texture-metal shadow-skeuo text-muted-foreground hover:text-primary hover:border-primary/30 border border-border transition-colors"
               >
                 <link.icon className="w-4 h-4" />

@@ -41,20 +41,21 @@ function StickyNote({ note, onDelete }: { note: Note; onDelete: (id: string) => 
       initial={{ scale: 0, rotate: note.rotation - 20 }}
       animate={{ scale: 1, rotate: note.rotation }}
       exit={{ scale: 0, rotate: note.rotation + 30, opacity: 0 }}
-      whileHover={{ 
-        scale: 1.05, 
-        rotate: 0, 
+      whileHover={{
+        scale: 1.05,
+        rotate: 0,
         zIndex: 50,
         transition: { type: "spring", stiffness: 300 }
       }}
+      drag
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className={`relative ${colorMap[note.color]} ${colorTextMap[note.color]} rounded-sm p-5 pt-8 shadow-note cursor-grab active:cursor-grabbing min-h-[140px] w-full`}
+      className={`relative ${colorMap[note.color]} ${colorTextMap[note.color]} rounded-sm p-5 pt-8 shadow-note cursor-move active:cursor-move min-h-[140px] w-full`}
       style={{ rotate: `${note.rotation}deg` }}
     >
       {/* Pin */}
       <motion.div
         whileHover={{ scale: 1.3, rotate: 15 }}
-        className="absolute -top-2 left-1/2 -translate-x-1/2 z-10"
+        className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 "
       >
         <div className="w-5 h-5 rounded-full bg-metal shadow-skeuo flex items-center justify-center border border-metal-light">
           <Pin className="w-2.5 h-2.5 text-foreground" />
@@ -79,7 +80,7 @@ function StickyNote({ note, onDelete }: { note: Note; onDelete: (id: string) => 
       </motion.button>
 
       {/* Note text */}
-      <p className="text-sm leading-relaxed font-mono select-none">{note.text}</p>
+      <p className="text-sm leading-relaxed font-mono ">{note.text}</p>
 
       {/* Paper fold effect */}
       <div className="absolute bottom-0 right-0 w-6 h-6 overflow-hidden">

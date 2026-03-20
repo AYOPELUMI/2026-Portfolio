@@ -42,8 +42,18 @@ const experiences = [
     company: "Voltis Labs",
     period: "Nov 2024 - May 2025",
     description: "Developed Android/iOS apps and web platforms. Built Prelura, Outfeatz, Spinnersonic, Afrogarm, and more. Designed scalable architectures, pixel-perfect Figma implementations, and real-time Firebase integrations.",
-    icon: MapPin,
+    icon: Briefcasegi,
     side: "right" as const,
+  },
+  {
+    id: 5,
+    type: "work",
+    title: "Front-End Engineer (Flutter & Web)",
+    company: "Zijela ICT ",
+    period: "Oct 2025- Present",
+    description: "Developed Android/iOS apps and web platforms. Built Altsupa, Proof of funds, Resolver, Facilify",
+    icon: MapPin,
+    side: "left" as const,
   },
 ]
 
@@ -54,9 +64,8 @@ function JourneyCard({ experience, index }: { experience: typeof experiences[0];
   return (
     <motion.div
       ref={ref}
-      className={`relative flex items-center gap-6 md:gap-12 ${
-        experience.side === "right" ? "md:flex-row-reverse" : ""
-      }`}
+      className={`relative flex items-center gap-6 md:gap-12 ${experience.side === "right" ? "md:flex-row-reverse" : ""
+        }`}
     >
       {/* Timeline dot */}
       <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 z-20">
@@ -80,16 +89,15 @@ function JourneyCard({ experience, index }: { experience: typeof experiences[0];
 
       {/* Card */}
       <motion.div
-        initial={{ 
-          x: experience.side === "left" ? -80 : 80, 
+        initial={{
+          x: experience.side === "left" ? -80 : 80,
           opacity: 0,
           rotateY: experience.side === "left" ? -10 : 10
         }}
         animate={isInView ? { x: 0, opacity: 1, rotateY: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className={`ml-20 md:ml-0 md:w-[calc(50%-3rem)] ${
-          experience.side === "right" ? "md:mr-auto" : "md:ml-auto"
-        }`}
+        className={`ml-20 md:ml-0 md:w-[calc(50%-3rem)] ${experience.side === "right" ? "md:mr-auto" : "md:ml-auto"
+          }`}
       >
         <motion.div
           whileHover={{ y: -4, scale: 1.02 }}
@@ -121,7 +129,7 @@ function JourneyCard({ experience, index }: { experience: typeof experiences[0];
 
           {/* Decorative corner */}
           <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold/20 rounded-br" />
-          
+
           {/* Hover glow */}
           <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </motion.div>

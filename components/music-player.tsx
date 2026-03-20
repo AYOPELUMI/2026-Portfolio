@@ -42,7 +42,7 @@ export function MusicPlayer() {
     if (oscillatorRef.current) {
       try {
         oscillatorRef.current.stop()
-      } catch {}
+      } catch { }
       oscillatorRef.current = null
     }
   }, [])
@@ -61,7 +61,7 @@ export function MusicPlayer() {
 
     oscillator.type = "sine"
     oscillator.frequency.setValueAtTime(track.frequency, ctx.currentTime)
-    
+
     filterNode.type = "lowpass"
     filterNode.frequency.setValueAtTime(800, ctx.currentTime)
     filterNode.Q.setValueAtTime(1, ctx.currentTime)
@@ -97,7 +97,7 @@ export function MusicPlayer() {
       stopAudio()
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying, currentTrack])
 
   useEffect(() => {
@@ -107,12 +107,12 @@ export function MusicPlayer() {
   }, [volume, isMuted])
 
   const togglePlay = () => setIsPlaying(!isPlaying)
-  
+
   const nextTrack = () => {
     setCurrentTrack((prev) => (prev + 1) % playlist.length)
     setProgress(0)
   }
-  
+
   const prevTrack = () => {
     setCurrentTrack((prev) => (prev - 1 + playlist.length) % playlist.length)
     setProgress(0)
@@ -120,10 +120,11 @@ export function MusicPlayer() {
 
   return (
     <motion.div
+      drag
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 2, type: "spring", stiffness: 100 }}
-      className="fixed bottom-4 right-4 z-40"
+      className="fixed bottom-4 right-4 z-40 cursor-move"
     >
       <AnimatePresence>
         {isExpanded && (
@@ -268,15 +269,13 @@ export function MusicPlayer() {
                         key={t.id}
                         whileHover={{ x: 4 }}
                         onClick={() => { setCurrentTrack(i); setProgress(0) }}
-                        className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
-                          i === currentTrack
-                            ? "bg-primary/10 text-primary"
-                            : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-                        }`}
+                        className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${i === currentTrack
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+                          }`}
                       >
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono ${
-                          i === currentTrack ? "bg-primary text-primary-foreground" : "bg-secondary"
-                        }`}>
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono ${i === currentTrack ? "bg-primary text-primary-foreground" : "bg-secondary"
+                          }`}>
                           {i === currentTrack && isPlaying ? (
                             <div className="flex items-end gap-0.5 h-3">
                               <motion.div animate={{ height: ["40%", "100%", "40%"] }} transition={{ duration: 0.5, repeat: Infinity }} className="w-0.5 bg-current rounded" />
