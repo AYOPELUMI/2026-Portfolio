@@ -42,7 +42,7 @@ const experiences = [
     company: "Voltis Labs",
     period: "Nov 2024 - May 2025",
     description: "Developed Android/iOS apps and web platforms. Built Prelura, Outfeatz, Spinnersonic, Afrogarm, and more. Designed scalable architectures, pixel-perfect Figma implementations, and real-time Firebase integrations.",
-    icon: Briefcasegi,
+    icon: Briefcase,
     side: "right" as const,
   },
   {

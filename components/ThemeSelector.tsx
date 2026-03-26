@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Palette } from "lucide-react"
 
 const themes = [
-    { id: "", label: "Warm Leather", color: "hsl(25, 15%, 12%)" },
     { id: "theme-steel", label: "Cold Steel", color: "hsl(210, 8%, 12%)" },
     { id: "theme-paper", label: "Warm Paper", color: "hsl(35, 25%, 90%)" },
     { id: "theme-obsidian", label: "Deep Obsidian", color: "hsl(220, 12%, 8%)" },
@@ -13,7 +12,7 @@ const themes = [
 
 export function ThemeSelector() {
     const [isOpen, setIsOpen] = useState(false)
-    const [activeTheme, setActiveTheme] = useState("")
+    const [activeTheme, setActiveTheme] = useState("theme-steel")
 
     const applyTheme = (themeId: string) => {
         document.documentElement.classList.remove("theme-steel", "theme-paper", "theme-obsidian")

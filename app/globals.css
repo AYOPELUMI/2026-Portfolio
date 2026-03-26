@@ -68,25 +68,8 @@
   }
 
   :root {
-    --background: oklch(0.15 0.01 60);
-    --foreground: oklch(0.92 0.02 75);
-    --card: oklch(0.22 0.015 55);
-    --card-foreground: oklch(0.92 0.02 75);
-    --popover: oklch(0.2 0.012 55);
-    --popover-foreground: oklch(0.92 0.02 75);
-    --primary: oklch(0.72 0.14 55);
-    --primary-foreground: oklch(0.15 0.01 60);
-    --secondary: oklch(0.28 0.02 55);
-    --secondary-foreground: oklch(0.88 0.03 75);
-    --muted: oklch(0.25 0.015 55);
-    --muted-foreground: oklch(0.65 0.04 60);
-    --accent: oklch(0.65 0.16 45);
-    --accent-foreground: oklch(0.12 0.01 55);
     --destructive: oklch(0.577 0.245 27.325);
     --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: oklch(0.32 0.025 55);
-    --input: oklch(0.28 0.02 55);
-    --ring: oklch(0.72 0.14 55);
     --chart-1: oklch(0.72 0.14 55);
     --chart-2: oklch(0.6 0.118 184.704);
     --chart-3: oklch(0.398 0.07 227.392);
@@ -102,21 +85,30 @@
     --sidebar-border: oklch(0.32 0.025 55);
     --sidebar-ring: oklch(0.72 0.14 55);
 
-    /* Custom skeuomorphic tokens */
-    --leather: oklch(0.3 0.05 45);
-    --leather-light: oklch(0.38 0.06 50);
-    --wood: oklch(0.25 0.04 55);
-    --wood-light: oklch(0.35 0.05 60);
-    --paper: oklch(0.88 0.04 85);
-    --paper-foreground: oklch(0.2 0.02 55);
-    --metal: oklch(0.55 0.02 60);
-    --metal-light: oklch(0.7 0.02 65);
-    --gold: oklch(0.72 0.14 55);
-    --gold-dim: oklch(0.55 0.1 55);
-    --note-yellow: oklch(0.88 0.12 95);
-    --note-pink: oklch(0.82 0.1 10);
-    --note-blue: oklch(0.82 0.08 240);
-    --note-green: oklch(0.82 0.1 145);
+    --background: oklch(0.18 0.02 210);
+    --foreground: oklch(0.88 0.04 210);
+    --card: oklch(0.22 0.025 210);
+    --card-foreground: oklch(0.88 0.04 210);
+    --popover: oklch(0.2 0.02 210);
+    --popover-foreground: oklch(0.88 0.04 210);
+    --primary: oklch(0.65 0.18 210);
+    --primary-foreground: oklch(0.12 0.01 210);
+    --secondary: oklch(0.26 0.03 210);
+    --secondary-foreground: oklch(0.78 0.035 210);
+    --muted: oklch(0.24 0.02 210);
+    --muted-foreground: oklch(0.55 0.025 210);
+    --accent: oklch(0.6 0.16 200);
+    --accent-foreground: oklch(0.12 0.01 210);
+    --border: oklch(0.3 0.025 210);
+    --input: oklch(0.26 0.03 210);
+    --ring: oklch(0.65 0.18 210);
+    --leather: oklch(0.28 0.03 210);
+    --leather-light: oklch(0.36 0.03 210);
+    --wood: oklch(0.24 0.025 210);
+    --metal: oklch(0.55 0.015 210);
+    --metal-light: oklch(0.65 0.015 210);
+    --gold: oklch(0.65 0.18 210);
+    --gold-dim: oklch(0.5 0.1 210);
   }
 
   .theme-steel {

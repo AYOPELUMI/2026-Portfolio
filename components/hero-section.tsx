@@ -1,163 +1,266 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Mail, Globe, Clock, Download, User } from "lucide-react"
-import Image from "next/image"
+import { Github, Linkedin, Mail, Instagram, Clock } from "lucide-react"
 
-const links = [
-  { icon: Github, label: "GitHub", href: "https://github.com/AYOPELUMI" },
-  { icon: Mail, label: "Email", href: "mailto:ayopelumi2014@gmail.com" },
-  { icon: Globe, label: "Portfolio", href: "https://ayopelumi.vercel.app" },
-  { icon: Clock, label: "WakaTime", href: "https://wakatime.com/@ayopelumi2014" },
+const socialLinks = [
+  { icon: Github, href: "https://github.com/ayopelumi", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/ogundeji-ayodeji", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:contact@ayodeji.dev", label: "Email" },
+  { icon: Clock, href: "#", label: "Wakatime" },
+]
+
+const skillBadges = [
+  { label: "Flutter", top: "18%", right: "8%", delay: 1.2 },
+  { label: "React", top: "35%", right: "3%", delay: 1.4 },
+  { label: "Mobile Apps", top: "55%", right: "5%", delay: 1.6 },
+  { label: "TypeScript", top: "72%", right: "10%", delay: 1.8 },
+  { label: "Web Design", top: "45%", right: "18%", delay: 1.5 },
+]
+
+const marqueeItems = [
+  "DESIGN", "SOFTWARE DEVELOPER", "MOBILE & APP DEVELOPER", "WEB DEVELOPER", "WEBSITE DESIGN",
+  "FLUTTER", "REACT", "TYPESCRIPT", "UI/UX", "FRONTEND",
 ]
 
 export function HeroSection() {
-  // Function to handle resume download
-  const handleDownloadResume = () => {
-    // Replace with your actual resume file path
-    const resumeUrl = "/resume.pdf"
-    const link = document.createElement("a")
-    link.href = resumeUrl
-    link.download = "Ogundeji_Ayodeji_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-44 pb-16">
-      {/* Animated background - desk texture */}
-      <div className="absolute inset-0 bg-background texture-wood" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+    <section id="about" className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(230,40%,12%)] via-[hsl(230,40%,12%)] to-leather" />
 
-      {/* Floating decorative elements */}
+      {/* Animated background orbs */}
       <motion.div
-        animate={{ y: [0, -15, 0], rotate: [0, 3, 0] }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-32 right-[15%] w-16 h-16 rounded-lg bg-leather/30 shadow-skeuo rotate-12 hidden lg:block"
+        className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(250,60%,40%)] blur-[120px] opacity-20"
       />
       <motion.div
-        animate={{ y: [0, 10, 0], rotate: [0, -2, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-32 left-[10%] w-12 h-12 rounded-full bg-gold/10 shadow-skeuo hidden lg:block"
+        animate={{ scale: [1.1, 1, 1.1], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] rounded-full bg-[hsl(220,70%,45%)] blur-[100px] opacity-15"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 text-center">
-        {/* Leather portfolio card */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0, rotateX: 15 }}
-          animate={{ scale: 1, opacity: 1, rotateX: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative bg-card rounded-2xl p-8 md:p-12 texture-leather shadow-skeuo-deep border border-border"
-        >
-          {/* Stitching border */}
-          <div className="absolute inset-4 border border-dashed border-gold/20 rounded-xl pointer-events-none" />
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex items-center pt-20 pb-16">
+        <div className="mx-auto max-w-7xl px-6 w-full">
+          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-8 items-center">
 
-
-
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground mb-4 gold-emboss text-balance"
-          >
-            Ogundeji{" "}
-            <span className="text-primary">Ayodeji</span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="mb-8"
-          >
-            <div className="inline-block bg-card/80 texture-leather rounded-xl px-6 py-3 shadow-skeuo border border-border">
-              <p className="font-mono text-sm md:text-base text-muted-foreground tracking-wide">
-                Front-End Web & Mobile Developer
-              </p>
-              <p className="font-mono text-xs text-muted-foreground/70 mt-1">
-                Flutter • React • Next.js • TypeScript
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed font-mono text-sm md:text-base text-pretty"
-          >
-            I build scalable, user-focused digital products across Flutter and JavaScript ecosystems.
-            Pixel-perfect interfaces, clean architecture, and modern development practices are my forte.
-          </motion.p>
-
-          {/* Action Buttons - Social Links + Download Resume */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-3"
-          >
-            {/* Download Resume Button */}
-            <motion.button
-              onClick={handleDownloadResume}
-              whileHover={{ y: -3, scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1, type: "spring", stiffness: 200 }}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary texture-metal shadow-skeuo text-white hover:bg-primary/90 border border-primary/30 transition-colors"
+            {/* Left: Testimonial */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.8, duration: 0.7 }}
+              className="hidden lg:block"
             >
-              <Download className="w-4 h-4" />
-              <span className="font-mono text-xs font-medium">Download Resume</span>
-            </motion.button>
+              <div className="bg-[hsl(230,30%,15%)]/80 backdrop-blur-md rounded-2xl p-6 border border-[hsl(230,30%,25%)] shadow-skeuo-deep max-w-xs">
+                <div className="text-[hsl(230,20%,50%)] text-3xl font-serif mb-3">"</div>
+                <p className="text-[hsl(220,15%,75%)] font-mono text-xs leading-relaxed mb-4">
+                  Ayodeji's Remarkable Design Transformed Our Website - Highly Recommended!
+                </p>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex -space-x-2">
+                    {[0, 1, 2, 3].map(i => (
+                      <div key={i} className="w-7 h-7 rounded-full bg-gradient-to-br from-[hsl(250,50%,50%)] to-[hsl(220,60%,40%)] border-2 border-[hsl(230,30%,15%)] flex items-center justify-center text-[8px] text-white font-mono">
+                        {["A", "B", "C", "D"][i]}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <span key={i} className="text-[hsl(45,80%,55%)] text-xs">★</span>
+                  ))}
+                  <span className="text-[hsl(220,15%,60%)] font-mono text-[10px] ml-1">150+ Reviews (4.9 of 5)</span>
+                </div>
+                <p className="text-[hsl(220,15%,50%)] font-mono text-[10px] mt-1">Reviews from Valued Clients</p>
+              </div>
+            </motion.div>
 
-            {/* Social Links */}
-            {links.map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1 + (i + 1) * 0.1, type: "spring", stiffness: 200 }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary texture-metal shadow-skeuo text-muted-foreground hover:text-primary hover:border-primary/30 border border-border transition-colors"
+            {/* Center: Profile + Name */}
+            <div className="text-center">
+              {/* Greeting */}
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-[hsl(220,15%,65%)] font-mono text-sm tracking-widest mb-4"
               >
-                <link.icon className="w-4 h-4" />
-                <span className="font-mono text-xs">{link.label}</span>
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.div>
+                Hello There!
+              </motion.p>
 
-        {/* Scroll indicator - compass needle */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="mt-12"
-        >
-          <motion.a
-            href="#experience"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-          >
-            <span className="font-mono text-xs tracking-widest uppercase">Scroll to explore</span>
-            <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/50 flex items-start justify-center p-1.5">
+              {/* Name */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight mb-2"
+              >
+                I'm{" "}
+                <motion.span
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(250,70%,65%)] to-[hsl(220,80%,60%)] inline-block"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, duration: 0.6, type: "spring" }}
+                >
+                  Ayodeji
+                </motion.span>
+              </motion.h1>
+
+              {/* Role */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="text-[hsl(220,15%,55%)] font-mono text-sm md:text-base tracking-wide mb-8"
+              >
+                Front-End Web & Mobile Developer
+              </motion.p>
+
+              {/* Profile Image */}
               <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1.5 h-1.5 rounded-full bg-primary"
-              />
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.8, type: "spring", stiffness: 100 }}
+                className="relative mx-auto w-52 h-52 md:w-64 md:h-64 mb-8"
+              >
+                {/* Glow ring */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  className="absolute -inset-3 rounded-full border-2 border-dashed border-[hsl(250,60%,50%)]/30"
+                />
+                <div className="absolute -inset-4 rounded-full bg-[hsl(250,60%,50%)]/15 blur-2xl" />
+
+
+
+                {/* Circular text around arrow */}
+                {/* <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute -top-6 -right-6 z-10 w-20 h-20"
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <defs>
+                      <path id="circlePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                    </defs>
+                    <text className="fill-[hsl(220,15%,55%)] text-[9px] font-mono uppercase tracking-[3px]">
+                      <textPath href="#circlePath">HIRE ME • TRY ME • HIRE ME •</textPath>
+                    </text>
+                  </svg>
+                </motion.div> */}
+
+                <div className="relative w-full h-full rounded-full overflow-hidden border-3 border-[hsl(250,40%,30%)] shadow-skeuo-deep">
+                  <motion.img
+                    src={""}
+                    alt="Ogundeji Ayodeji"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
+              </motion.div>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.4 }}
+                className="flex items-center justify-center gap-4 mb-6"
+              >
+                <motion.a
+                  href="#projects"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-7 py-3 rounded-full bg-gradient-to-r from-[hsl(230,40%,12%)] via-[hsl(230,40%,12%)] to-leather text-white font-mono text-sm font-semibold shadow-skeuo-deep hover:brightness-110 transition-all"
+                >
+                  Portfolio
+                </motion.a>
+                <motion.a
+                  href="mailto:contact@ayodeji.dev"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-7 py-3 rounded-full bg-[hsl(230,30%,18%)] border border-[hsl(250,40%,35%)] text-[hsl(220,15%,80%)] font-mono text-sm font-semibold shadow-skeuo hover:border-[hsl(250,50%,50%)] transition-all"
+                >
+                  Hire Me
+                </motion.a>
+              </motion.div>
             </div>
-          </motion.a>
-        </motion.div>
+
+            {/* Right: Floating Badges + Social */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.2, duration: 0.7 }}
+              className="hidden lg:flex flex-col justify-end-safe items-end gap-6"
+            >
+              {/* Skill badges */}
+              <div className="relative w-fit flex flex-wrap">
+                {skillBadges.map((badge, i) => (
+                  <motion.div
+                    key={badge.label}
+                    initial={{ opacity: 0, scale: 0, x: 20 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{ delay: badge.delay, type: "spring", stiffness: 150 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="px-3 py-1.5 rounded-full bg-[hsl(230,30%,18%)]/90 backdrop-blur-sm border border-[hsl(250,35%,30%)] text-[hsl(220,15%,75%)] font-mono text-[10px] shadow-skeuo cursor-default whitespace-nowrap"
+                    style={{ top: badge.top, right: badge.right }}
+                  >
+                    {badge.label}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Social section */}
+              <div className="text-right">
+                <p className="text-[hsl(220,15%,50%)] font-mono text-[10px] tracking-widest uppercase mb-3">
+                  Follow Us On
+                </p>
+                <div className="flex items-center gap-2">
+                  {socialLinks.map(({ icon: Icon, href, label }, i) => (
+                    <motion.a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 2 + i * 0.1 }}
+                      whileHover={{ y: -3, scale: 1.15 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-9 h-9 rounded-full bg-[hsl(230,30%,18%)] border border-[hsl(250,35%,30%)] flex items-center justify-center text-[hsl(220,15%,60%)] hover:text-[hsl(250,70%,65%)] hover:border-[hsl(250,50%,50%)] transition-colors shadow-skeuo"
+                      aria-label={label}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
+
+      {/* Mobile social links */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8 }}
+        className="lg:hidden relative z-10 flex items-center justify-center gap-3 pb-4"
+      >
+        {socialLinks.map(({ icon: Icon, href, label }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-9 h-9 rounded-full bg-[hsl(230,30%,18%)] border border-[hsl(250,35%,30%)] flex items-center justify-center text-[hsl(220,15%,60%)] shadow-skeuo"
+            aria-label={label}
+          >
+            <Icon className="w-3.5 h-3.5" />
+          </a>
+        ))}
+      </motion.div>
     </section>
   )
 }
